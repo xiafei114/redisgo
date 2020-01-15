@@ -491,6 +491,11 @@ func (c *Cacher) LRange(key string, start, end int) (interface{}, error) {
 	return c.Do("LRANGE", c.getKey(key), start, end)
 }
 
+// Lindex 返回列表 key 列表中下标为指定索引值的元素。
+func (c *Cacher) Lindex(key string, index int) (interface{}, error) {
+	return c.Do("LINDEX", c.getKey(key), index)
+}
+
 /**
 Redis 有序集合和集合一样也是string类型元素的集合,且不允许重复的成员。
 不同的是每个元素都会关联一个double类型的分数。redis正是通过分数来为集合中的成员进行从小到大的排序。
